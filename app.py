@@ -36,9 +36,7 @@ def get_users():
     output = []
     for user in users:
         # 增加 id 欄位
-        output.append({git add .
-git commit -m "Update MongoDB to Cloud Atlas and add requirements"
-git push origin main
+        output.append({
             'id': user.id,
             'name': user.username,
             'email': user.email
