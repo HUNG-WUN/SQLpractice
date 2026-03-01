@@ -14,18 +14,18 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50))
     email = db.Column(db.String(100))
+# --- 2. MongoDB 設定 (改為雲端網址) ---
+# 提示：請確保密碼正確，且 Network Access 已設為 0.0.0.0/0
+uri = "mongodb+srv://s411147136_db_user:RBKafVx8fzDWmCNm@cluster0.481tf8l.mongodb.net/?appName=Cluster0"
 
-# --- 2. MongoDB 設定 ---
-# 提示：確保你的 MongoDB 服務已經啟動（預設 Port 是 27017）
 try:
-    mongo_client = MongoClient('mongodb://localhost:27017/', serverSelectionTimeoutMS=2000)
+    mongo_client = MongoClient(uri, serverSelectionTimeoutMS=5000)
     mongo_db = mongo_client['my_mongo_db']
     collection = mongo_db['test_collection']
-    # 測試連線是否成功
     mongo_client.server_info()
-    print("✅ MongoDB 連線成功")
-except:
-    print("❌ MongoDB 連線失敗，請確認服務已啟動")
+    print("✅ 雲端 MongoDB 連線成功")
+except Exception as e:
+    print(f"❌ 雲端 MongoDB 連線失敗: {e}")
 
 # --- 3. API 路由設定 ---
 
@@ -36,7 +36,9 @@ def get_users():
     output = []
     for user in users:
         # 增加 id 欄位
-        output.append({
+        output.append({git add .
+git commit -m "Update MongoDB to Cloud Atlas and add requirements"
+git push origin main
             'id': user.id,
             'name': user.username,
             'email': user.email
