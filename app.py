@@ -119,5 +119,6 @@ def delete_user(user_id):
         return jsonify({"error": "伺服器內部錯誤", "details": str(e)}), 500
 # --- 4. 啟動伺服器 ---
 if __name__ == '__main__':
-    from waitress import serve
-    serve(app, host='0.0.0.0', port=5000)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
