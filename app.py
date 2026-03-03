@@ -3,7 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from pymongo import MongoClient  # 導入 MongoDB 套件
 
 app = Flask(__name__)
-
+@app.app.route('/')
+def home():
+    return "<h1>我的 API 伺服器正在運作中！</h1><p>請前往 /api/mongo/all 查看資料。</p>"
 # --- 1. MySQL 設定 ---
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:5201314@localhost/my_practice_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
